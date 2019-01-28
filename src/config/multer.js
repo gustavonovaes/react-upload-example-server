@@ -7,7 +7,7 @@ const allowedMimes = [
   'image/jpeg',
   'image/pjpeg',
   'image/png',
-  'image/gif',
+  'image/gif'
 ]
 
 const storageTypes = {
@@ -32,7 +32,7 @@ const storage = storageTypes[process.env.STORAGE_TYPE]
 module.exports = {
   dest: STATIC_FILES_PATH,
   limits: {
-    fileSize: MAX_FILE_SIZE,
+    fileSize: MAX_FILE_SIZE
   },
   fileFilter: (req, file, cb) => {
     const isAllowedMime = allowedMimes.includes(

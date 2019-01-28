@@ -1,6 +1,6 @@
 const {
   createConnection,
-  defineSchemaModels,
+  defineSchemaModels
 } = require('../utils/mongoose')
 
 const schemas = require('../schemas')
@@ -9,14 +9,14 @@ const mongooseMiddleware = uri => (req, _, next) => {
   let $cache
 
   Object.defineProperty(req, '$models', {
-    get() {
+    get () {
       if (!$cache) {
         const conn = createConnection(uri)
         $cache = defineSchemaModels(conn, schemas)
       }
 
       return $cache
-    },
+    }
   })
 
   next()

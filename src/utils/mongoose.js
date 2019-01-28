@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const createConnection = uri => {
   return mongoose.createConnection(uri, {
-    useNewUrlParser: true,
+    useNewUrlParser: true
   })
 }
 
@@ -15,5 +15,5 @@ const defineSchemaModels = (conn, schemas) => {
 
 module.exports = {
   createConnection,
-  defineSchemaModels,
+  defineSchemaModels
 }

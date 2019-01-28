@@ -10,7 +10,7 @@ router.get('/posts', async (req, res) => {
 
 router.post('/posts', multer.single('file'), async (req, res) => {
   const { originalname: name, size, filename, key, location: url } = req.file
-   
+
   const post = await req.$models.Post.create({
     name,
     size,
@@ -18,7 +18,7 @@ router.post('/posts', multer.single('file'), async (req, res) => {
     url: url || `/static/${key}`,
     storageType: process.env.STORAGE_TYPE || 'local'
   })
-  
+
   return res.json(post)
 })
 

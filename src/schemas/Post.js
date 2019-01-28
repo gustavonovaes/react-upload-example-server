@@ -12,7 +12,7 @@ const Post = new Schema({
   createdAt: { type: Date, default: Date.now }
 })
 
-Post.pre('remove', function() {
+Post.pre('remove', function () {
   if (this.storageType === 'local') {
     const filePath = `${STATIC_FILES_PATH}/${this.key}`
     console.log(filePath)
@@ -22,7 +22,7 @@ Post.pre('remove', function() {
   if (this.storageType === 's3') {
     return s3.deleteObject({
       Bucket: process.env.AWS_S3_BUCKET_NAME,
-      Key: this.key, 
+      Key: this.key
     }).promise()
   }
 })
