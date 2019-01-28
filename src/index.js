@@ -7,6 +7,7 @@ const { STATIC_FILES_PATH } = require('./config/constants')
 const app = express()
 
 app.use(morgan('dev'))
+app.use(require('./plugins/mongoose')(process.env.MONGO_URL))
 app.use(require('./routes'))
 app.use('/static', express.static(STATIC_FILES_PATH))
 
