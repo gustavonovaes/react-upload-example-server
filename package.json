@@ -1,0 +1,7 @@
+{
+  "name": "express-mongodb-s3",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "author": "Gustavo Novaes <gustavonovaes93@gmail.com>",
+  "license": "MIT"
+}
