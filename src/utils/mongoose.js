@@ -2,8 +2,15 @@ const mongoose = require('mongoose')
 
 const createConnection = uri => {
   return mongoose.createConnection(uri, {
-    useNewUrlParser: true
-  })
+    useNewUrlParser: true,
+    connectTimeoutMS: 10000,
+    socketTimeoutMS: 10000
+  }).then(
+    () => {},
+    err => {
+      console.log('Unable to connect to the server. Please start the server. Error:', err.name);
+    }
+  )
 }
 
 const defineSchemaModels = (conn, schemas) => {
