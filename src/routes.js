@@ -24,7 +24,8 @@ router.post('/posts', multer.single('file'), async (req, res) => {
   
     return res.json(post)
   } catch (err) {
-    return res.json(500, {
+    console.log(err)
+    return res.status(500).json({
       error: err
     })
   }
