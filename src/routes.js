@@ -13,15 +13,21 @@ router.post('/posts', multer.single('file'), async (req, res) => {
 
   const postKey = key || filename
 
-  const post = await req.$models.Post.create({
-    name,
-    size,
-    key: postKey,
-    url: url || `/static/${postKey}`,
-    storageType: process.env.STORAGE_TYPE || 'local'
-  })
-
-  return res.json(post)
+  try {
+    const post = await req.$models.Post.create({
+      name,
+      size,
+      key: postKey,
+      url: url || `/static/${postKey}`,
+      storageType: process.env.STORAGE_TYPE || 'local'
+    })
+  
+    return res.json(post)
+  } catch (err) {
+    return res.json(500, {
+      error: err
+    })
+  }
 })
 
 router.delete('/posts/:id', async (req, res) => {
