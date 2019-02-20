@@ -14,6 +14,7 @@ const storageTypes = {
   s3: multerS3({
     s3,
     bucket: process.env.AWS_S3_BUCKET_NAME,
+    acl: 'public-read',
     contentType: multerS3.AUTO_CONTENT_TYPE,
     key: function (req, file, cb) {
       const timestamp = Date.now().toString()
